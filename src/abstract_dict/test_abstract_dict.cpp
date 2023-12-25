@@ -5,15 +5,30 @@
 
 
 void test_abstract_dict() {
+    std::cout << "##### test_abstract_dict ##### " << std::endl;
 
-    AbstractDict<std::string, int> myStringIntDict;
-    myStringIntDict.try_emplace("one", 1);
-    myStringIntDict.try_emplace("two", 22);
-    std::cout << "Value for key 'two': " << myStringIntDict.get("two") << std::endl;
-    if (myStringIntDict.contains("four")) {
-        std::cout << "Value for key 'four': " << myStringIntDict.get("four") << std::endl;
+    AbstractDict<std::string> myStringDict;
+
+    myStringDict.emplace("key1", 42);             // int value
+    myStringDict.try_emplace("key2", 3.14);       // double value
+    myStringDict.try_emplace("key3", "value");    // std::string value
+
+    if (myStringDict.contains("key1")) {
+        std::cout << "Value for key 'key1': " << myStringDict.get<int>("key1") << std::endl;
+    }
+
+    if (myStringDict.contains("key2")) {
+        std::cout << "Value for key 'key2': " << myStringDict.get<double>("key2") << std::endl;
+    }
+
+    if (myStringDict.contains("key3")) {
+        std::cout << "Value for key 'key3': " << myStringDict.get<std::string>("key3") << std::endl;
+    }
+
+    if (myStringDict.contains("four")) {
+        std::cout << "Value for key 'four': " << myStringDict.get<int>("four") << std::endl;
     } else {
         std::cout << "Key 'four' not found." << std::endl;
     }
-    
+
 }
