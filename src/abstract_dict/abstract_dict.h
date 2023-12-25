@@ -1,3 +1,6 @@
+#ifndef ABSTRACT_DICT_H
+#define ABSTRACT_DICT_H
+
 #include <iostream>
 #include <variant>
 #include <unordered_map>
@@ -33,3 +36,5 @@ public:
 private:
     std::unordered_map<KeyType, std::variant<int, double, std::string>, Hash, KeyEqual, Allocator> dictionary;
 };
+
+#endif // ABSTRACT_DICT_H
